@@ -1,0 +1,28 @@
+.carrusel{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-self: baseline;
+
+}
+
+li>img{
+    width: 4rem;
+}
+
+ul#carrusel {
+    background-color: rgba(240, 248, 255, 0.219);
+    box-shadow: inset 0px 0px 5px 2px rgb(24, 24, 23);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: row;
+  }
+  ul {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-x: auto;
+    gap: 1rem;
+    list-style-type: disc;
+  }
