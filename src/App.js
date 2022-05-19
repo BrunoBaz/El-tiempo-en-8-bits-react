@@ -10,9 +10,6 @@ function App() {
 
   const [city, setCity] = useState("");
 
-  console.log("latitude", lat);
-  console.log("longitude", lon);
-
   return (
     <>
       <header>

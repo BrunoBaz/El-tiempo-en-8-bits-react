@@ -4,7 +4,6 @@ export const ButtonGPS = ({ setLat, setLon }) => {
       event.preventDefault();
       navigator.geolocation.getCurrentPosition(
         function async(pos) {
-          console.log(pos, setLat);
           setLat(pos.coords.latitude);
           setLon(pos.coords.longitude);
         },

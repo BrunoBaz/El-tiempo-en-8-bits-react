@@ -9,7 +9,7 @@ import "./style.css";
 export const MainPage = ({ lat, lon, city, setLat, setLon }) => {
   const [currentWeather, setCurrentWeather] = useState("");
   const [weatherByHours, setWeatherByHours] = useState("");
-
+  console.log(currentWeather);
   return (
     <>
       {city !== "" && (
