@@ -4,17 +4,36 @@
   box-sizing: border-box;
 }
 
-main{
+body{
   background-image: url("../public/IMG/fondo-dia@2x.png");
   background-repeat: repeat-x;
   background-size: contain;
   height: 100vh;
   display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    
-    align-items: center;
+flex-direction: column;
+align-items: center;
+gap: 3rem;
 }
+
+header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: flex-start;
+  gap: 2rem;
+  align-items: center;
+}
+
 #logo{
   width: 10rem;
+  margin-top: 4rem;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  align-items: center;
+  gap: 3rem;
 }

@@ -1,11 +1,22 @@
-export const ButtonGPS = ({ setLatitude, setLongitude }) => {
+export const ButtonGPS = ({ setLat, setLon }) => {
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      await navigator.geolocation.getCurrentPosition(function async(pos) {
-        setLatitude(pos.coords.latitude);
-        setLongitude(pos.coords.longitude);
-      });
+      navigator.geolocation.getCurrentPosition(
+        function async(pos) {
+          console.log(pos, setLat);
+          setLat(pos.coords.latitude);
+          setLon(pos.coords.longitude);
+        },
+        function error(err) {
+          console.warn("ERROR(" + err.code + "): " + err.message);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0,
+        }
+      );
     } catch (error) {
       console.error(error);
     }

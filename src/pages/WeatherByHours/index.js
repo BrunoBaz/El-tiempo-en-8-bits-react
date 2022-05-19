@@ -8,13 +8,13 @@ export const WeatherByHours = ({ weatherByHours }) => {
         // console.log(datos);
         return (
           <li key={datos.dt} className="carrusel">
-            <p>
+            <h3>
               {new Date(datos.dt * 1000).toLocaleString("es-ES", {
                 hour: "2-digit",
                 minute: "2-digit",
               })}
-            </p>
-            <p>{datos.temp}ºC</p>
+            </h3>
+            <h4>{Math.round(datos.temp)}ºC</h4>
             <img
               src={`/IMG/${datos.weather.map((e) => e.main)}.gif`}
               alt={datos.weather.map((e) => e.description)}

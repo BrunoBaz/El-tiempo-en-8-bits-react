@@ -2,14 +2,10 @@
 
 import { useEffect } from "react";
 
-export const SearchWeatherByHours = ({
-  latitude,
-  longitude,
-  setWeatherByHours,
-}) => {
+export const SearchWeatherByHours = ({ lat, lon, setWeatherByHours }) => {
   const fetchApi = async () => {
     const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=days,minutely&units=metric&lang=sp&appid=${process.env.REACT_APP_API_KEY}`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=days,minutely&units=metric&lang=sp&appid=${process.env.REACT_APP_API_KEY}`
     );
     const data = await res.json();
 
@@ -18,5 +14,5 @@ export const SearchWeatherByHours = ({
 
   useEffect(() => {
     fetchApi();
-  }, []);
+  }, [lat, lon]);
 };

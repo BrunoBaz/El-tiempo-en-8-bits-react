@@ -14,10 +14,12 @@ export const CurrentWeather = ({ currentWeather }) => {
 
   const clima = currentWeather.weather.map((e) => e.description);
   const main = currentWeather.weather.map((e) => e.main);
+  const temperatura=Math.round(currentWeather.main.temp)
+
 
   return (
     <article className="currentWeather">
-      <h2>{` Tu ubicación es ${ubicacion}`}</h2>
+      <h2>{`${ubicacion}`}</h2>
       <h3>
         {dateTime.toLocaleString("es-ES", {
           hour: "2-digit",
@@ -25,7 +27,8 @@ export const CurrentWeather = ({ currentWeather }) => {
         })}
       </h3>
       <img className="mainImg" src={`/IMG/${main}.gif`} alt={clima}></img>
-      <p> {`Ahora mismo hay ${clima}`}</p>
+      <h2>{`${temperatura}ºC`}</h2>
+      <h2> {`${clima}`}</h2>
     </article>
   );
 };
