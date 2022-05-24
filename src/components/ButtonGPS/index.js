@@ -1,3 +1,4 @@
+import "./style.css";
 export const ButtonGPS = ({ setLat, setLon }) => {
   const handleSubmit = async (event) => {
     try {
@@ -11,7 +12,7 @@ export const ButtonGPS = ({ setLat, setLon }) => {
           console.warn("ERROR(" + err.code + "): " + err.message);
         },
         {
-          enableHighAccuracy: true,
+          enableHighAccuracy: false,
           timeout: 5000,
           maximumAge: 0,
         }
@@ -23,7 +24,9 @@ export const ButtonGPS = ({ setLat, setLon }) => {
 
   return (
     <form onSubmit={handleSubmit} id="button">
-      <button type="submit">GPS</button>
+      <button type="submit">
+        <img src="/IMG/GPS-animacion.gif" alt="" id="GPS-button"></img>
+      </button>
     </form>
   );
 };

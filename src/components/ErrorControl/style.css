@@ -1,0 +1,9 @@
+#errorControl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#error {
+  height: 16rem;
+}

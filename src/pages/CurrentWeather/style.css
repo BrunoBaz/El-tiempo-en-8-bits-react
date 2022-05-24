@@ -1,9 +1,9 @@
-.currentWeather{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.currentWeather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.mainImg{
-    width: 9rem;
+.mainImg {
+  width: 9rem;
 }

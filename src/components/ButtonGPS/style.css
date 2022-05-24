@@ -1,0 +1,8 @@
+#GPS-button {
+  width: 4rem;
+}
+
+form > button {
+  background: none;
+  border: none;
+}

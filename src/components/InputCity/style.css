@@ -1,0 +1,14 @@
+.GPSBuscador {
+  width: 5rem;
+}
+
+#botonBuscador {
+  background: none;
+  border: none;
+}
+#formBuscador {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
