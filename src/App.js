@@ -14,15 +14,15 @@ function App() {
   const [lat, setLat] = useState(null);
   const [lon, setLon] = useState(null);
   const [city, setCity] = useState("");
+  //url fetch
   const urlByHours = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=days,minutely&units=metric&lang=sp&appid=${process.env.REACT_APP_API_KEY}`;
   const urlCurrent = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=sp&appid=${process.env.REACT_APP_API_KEY}`;
 
   const { latitude, longitude, errorCity } = useSearchWeatherByLocation(city);
-  const { weatherByHours, error } = useGetDataApi(lat, lon, urlByHours);
-  const { currentWeather } = useGetDataApi(lat, lon, urlCurrent);
-  console.log(errorCity);
-  const dateTime = useRefreshingDate();
-  const hours = dateTime.getHours();
+  const [weatherByHours, errorByHours] = useGetDataApi(lat, lon, urlByHours);
+  const [currentWeather, errorCurrent] = useGetDataApi(lat, lon, urlCurrent);
+  /*   const dateTime = useRefreshingDate();
+  const hours = dateTime.getHours(); */
   useEffect(() => {
     setLat(latitude);
     setLon(longitude);
@@ -30,16 +30,16 @@ function App() {
 
   return (
     <section
-      className={hours >= "20" || hours <= "07" ? "noche" : null}
+      /*  className={hours >= "20" || hours <= "07" ? "noche" : null} */
       id="mainRoot"
     >
       <header>
         <img src="/IMG/logo.svg" alt="El tiempo en 8-bits logo" id="logo"></img>
         <h2>
-          {dateTime.toLocaleString("es-ES", {
+          {/*  {dateTime.toLocaleString("es-ES", {
             hour: "2-digit",
             minute: "2-digit",
-          })}
+          })} */}
         </h2>
         <article className="headerInputs">
           {lat !== null && lon !== null && (
@@ -48,24 +48,20 @@ function App() {
           <InputCity setCity={setCity} />
         </article>
       </header>{" "}
-      {lat === null && lon === null ? (
+      {lat === null && lon === null && !errorCity ? (
         <CentralButton setLat={setLat} setLon={setLon} />
-      ) : (
-        (error || errorCity ? (
-          <ErrorControl error={error || errorCity} />
-        ) : null) || (
-          <main className="weathers">
-            {currentWeather && (
-              <CurrentWeather currentWeather={currentWeather} />
-            )}
-            {weatherByHours && (
-              // <article className="weatherCarrousel">
-              <WeatherByHours weatherByHours={weatherByHours} />
-              // </article>
-            )}
-          </main>
-        )
-      )}
+      ) : null}
+      {errorByHours || errorCurrent || errorCity ? (
+        <ErrorControl error={errorByHours || errorCurrent || errorCity} />
+      ) : null}
+      <main className="weathers">
+        {!errorCity && !errorCurrent && currentWeather && (
+          <CurrentWeather currentWeather={currentWeather} />
+        )}
+        {!errorCity && !errorByHours && weatherByHours && (
+          <WeatherByHours weatherByHours={weatherByHours} />
+        )}
+      </main>
       <footer>Bruno Baz Álvarez</footer>
     </section>
   );

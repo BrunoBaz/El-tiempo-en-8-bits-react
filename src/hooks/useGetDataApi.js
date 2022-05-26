@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useGetDataApi = (lat, lon, url) => {
-  const [weatherByHours, setWeatherByHours] = useState(null);
-  const [currentWeather, setCurrentWeather] = useState(null);
+  const [result, setResult] = useState(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -12,10 +11,9 @@ export const useGetDataApi = (lat, lon, url) => {
           const res = await fetch(url);
           if (res.ok) {
             const data = await res.json();
-            setWeatherByHours(data);
-            setCurrentWeather(data);
+            setResult(data);
           } else {
-            throw new Error("Se ha producido un problema con el fetch");
+            throw new Error("Se ha producido un problema con el servidor");
           }
         } catch (err) {
           console.log(err.message);
@@ -27,5 +25,5 @@ export const useGetDataApi = (lat, lon, url) => {
     /*     console.log("IsError", isError); */
   }, [lat, lon, url]);
 
-  return { weatherByHours, currentWeather, error };
+  return [result, error];
 };

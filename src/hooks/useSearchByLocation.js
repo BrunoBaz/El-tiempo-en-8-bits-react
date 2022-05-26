@@ -11,11 +11,15 @@ export const useSearchWeatherByLocation = (city) => {
           const res = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`
           );
+          console.log(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.REACT_APP_API_KEY}`
+          );
           if (res.ok) {
             const data = await res.json();
 
             setLatitude(data.coord.lat);
             setLongitude(data.coord.lon);
+            city = null;
           } else {
             throw new Error("La ciudad introducida no es válida");
           }
