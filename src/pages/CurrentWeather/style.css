@@ -5,5 +5,11 @@
 }
 
 .mainImg {
-  width: 9rem;
+  width: 20rem;
+}
+
+@media (max-width: 900px) {
+  .mainImg {
+    width: 8rem;
+  }
 }

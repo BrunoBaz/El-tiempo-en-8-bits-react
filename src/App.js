@@ -42,10 +42,13 @@ function App() {
           })} */}
         </h2>
         <article className="headerInputs">
-          {lat !== null && lon !== null && (
-            <ButtonGPS setLat={setLat} setLon={setLon} />
-          )}
-          <InputCity setCity={setCity} />
+          <InputCity
+            setCity={setCity}
+            setLat={setLat}
+            setLon={setLon}
+            lat={lat}
+            lon={lon}
+          />
         </article>
       </header>{" "}
       {lat === null && lon === null && !errorCity ? (

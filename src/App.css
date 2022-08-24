@@ -8,13 +8,14 @@
   background-image: url("../public/IMG/fondo-dia@2x.png");
   background-repeat: repeat-x;
   background-size: contain;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   /*   justify-content: space-between; */
   gap: 1.5rem;
+  overflow: hidden;
 }
 #mainRoot.noche {
   background-image: url("../public/IMG/fondo-noche@2x.png");
@@ -51,14 +52,14 @@ header {
   gap: 0.5rem;
 }
 
-main {
+/* main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   align-items: center;
   gap: 3rem;
-}
+} */
 
 button > img {
   padding: 0;
@@ -76,4 +77,12 @@ footer {
   font-weight: bold;
   position: absolute;
   bottom: 0;
+}
+@media (max-width: 900px) {
+  .weathers {
+    gap: 1rem;
+  }
+  header {
+    gap: 1rem;
+  }
 }
