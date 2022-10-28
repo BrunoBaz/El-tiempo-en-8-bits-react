@@ -29,44 +29,50 @@ function App() {
   }, [latitude, longitude]);
 
   return (
-    <section
-      /*  className={hours >= "20" || hours <= "07" ? "noche" : null} */
-      id="mainRoot"
-    >
-      <header>
-        <img src="/IMG/logo.svg" alt="El tiempo en 8-bits logo" id="logo"></img>
-        <h2>
-          {/*  {dateTime.toLocaleString("es-ES", {
+    <>
+      <section
+        /*  className={hours >= "20" || hours <= "07" ? "noche" : null} */
+        id="mainRoot"
+      >
+        <header>
+          <img
+            src="/IMG/logo.svg"
+            alt="El tiempo en 8-bits logo"
+            id="logo"
+          ></img>
+          <h2>
+            {/*  {dateTime.toLocaleString("es-ES", {
             hour: "2-digit",
             minute: "2-digit",
           })} */}
-        </h2>
-        <article className="headerInputs">
-          <InputCity
-            setCity={setCity}
-            setLat={setLat}
-            setLon={setLon}
-            lat={lat}
-            lon={lon}
-          />
-        </article>
-      </header>{" "}
-      {lat === null && lon === null && !errorCity ? (
-        <CentralButton setLat={setLat} setLon={setLon} />
-      ) : null}
-      {errorByHours || errorCurrent || errorCity ? (
-        <ErrorControl error={errorByHours || errorCurrent || errorCity} />
-      ) : null}
-      <main className="weathers">
-        {!errorCity && !errorCurrent && currentWeather && (
-          <CurrentWeather currentWeather={currentWeather} />
-        )}
-        {!errorCity && !errorByHours && weatherByHours && (
-          <WeatherByHours weatherByHours={weatherByHours} />
-        )}
-      </main>
-      <footer>Bruno Baz Álvarez</footer>
-    </section>
+          </h2>
+          <article className="headerInputs">
+            <InputCity
+              setCity={setCity}
+              setLat={setLat}
+              setLon={setLon}
+              lat={lat}
+              lon={lon}
+            />
+          </article>
+        </header>{" "}
+        {lat === null && lon === null && !errorCity ? (
+          <CentralButton setLat={setLat} setLon={setLon} />
+        ) : null}
+        {errorByHours || errorCurrent || errorCity ? (
+          <ErrorControl error={errorByHours || errorCurrent || errorCity} />
+        ) : null}
+        <main className="weathers">
+          {!errorCity && !errorCurrent && currentWeather && (
+            <CurrentWeather currentWeather={currentWeather} />
+          )}
+          {!errorCity && !errorByHours && weatherByHours && (
+            <WeatherByHours weatherByHours={weatherByHours} />
+          )}
+        </main>
+        <footer>Bruno Baz Álvarez</footer>
+      </section>
+    </>
   );
 }
 
